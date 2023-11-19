@@ -2,13 +2,15 @@
   import Header from "./components/Header.vue"
   import Card from "./components/Card.vue"
   import initialCards from "./initialCards"
+  import {Container, Draggable} from "vue3-smooth-dnd"
 
   export default {
     components: {
+      Container,
+      Draggable,
       Header,
       Card
     },
-
     data () {
       return {
         cards : {
@@ -28,19 +30,35 @@
   <div class="board">
     <div class="lane">
       <h2 class="lane-title">Backlog</h2>
-      <Card v-for="card in cards.backlog" :key="card.id">{{ card.text }}</Card>
+      <Container group-name="kanban">
+        <Draggable v-for="card in cards.backlog" :key="card.id">
+          <Card>{{ card.text }}</Card>  
+        </Draggable>
+      </Container>
     </div>
     <div class="lane">
       <h2 class="lane-title">Desenvolvimento</h2>
-      <Card v-for="card in cards.dev" :key="card.id">{{ card.text }}</Card>
+      <Container group-name="kanban">
+        <Draggable v-for="card in cards.dev" :key="card.id">
+          <Card>{{ card.text }}</Card>  
+        </Draggable>
+      </Container>
     </div>
     <div class="lane">
       <h2 class="lane-title">Testes</h2>
-      <Card v-for="card in cards.testes" :key="card.id">{{ card.text }}</Card>
+      <Container group-name="kanban">
+        <Draggable v-for="card in cards.testes" :key="card.id">
+          <Card>{{ card.text }}</Card>  
+        </Draggable>
+      </Container>
     </div>
     <div class="lane">
       <h2 class="lane-title">Fechados</h2>
-      <Card v-for="card in cards.fechados" :key="card.id">{{ card.text }}</Card>
+      <Container group-name="kanban">
+        <Draggable v-for="card in cards.fechados" :key="card.id">
+          <Card>{{ card.text }}</Card>  
+        </Draggable>
+      </Container>
     </div>
   </div>
 </template>
