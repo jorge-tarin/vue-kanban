@@ -4,6 +4,11 @@
   import initialCards from "./initialCards"
 
   export default {
+    components: {
+      Header,
+      Card
+    },
+
     data () {
       return {
         cards : {
@@ -19,7 +24,7 @@
 </script>
 
 <template>
-  <Header />
+  <Header/>
   <div class="board">
     <div class="lane">
       <h2 class="lane-title">Backlog</h2>
